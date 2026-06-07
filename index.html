@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pain&Gain GYM Checkout</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+<div class="checkout-container">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <i class="fa-solid fa-dumbbell"></i>
+
+            <h2>Pain&Gain GYM</h2>
+
+        </div>
+
+        <div class="order-card">
+
+            <h4>Order Summary</h4>
+
+            <div class="summary-item">
+                <span>Premium Membership</span>
+                <span>$49</span>
+            </div>
+
+            <div class="summary-item">
+                <span>Personal Trainer</span>
+                <span>$20</span>
+            </div>
+
+            <div class="summary-item">
+                <span>Nutrition Plan</span>
+                <span>$15</span>
+            </div>
+
+            <hr>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <span>$84</span>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- CONTENT -->
+
+    <main class="main-content">
+
+        <!-- STEPPER -->
+
+        <div class="stepper">
+
+            <div class="step active" id="indicator1">
+                <div class="circle">1</div>
+                <p>Summary</p>
+            </div>
+
+            <div class="step" id="indicator2">
+                <div class="circle">2</div>
+                <p>Personal</p>
+            </div>
+
+            <div class="step" id="indicator3">
+                <div class="circle">3</div>
+                <p>Address</p>
+            </div>
+
+            <div class="step" id="indicator4">
+                <div class="circle">4</div>
+                <p>Payment</p>
+            </div>
+
+            <div class="step" id="indicator5">
+                <div class="circle">5</div>
+                <p>Confirm</p>
+            </div>
+
+        </div>
+
+        <!-- STEP 1 -->
+
+        <section class="form-step active" id="step1">
+
+            <h1>Checkout Summary</h1>
+
+            <p class="subtitle">
+                Review your membership package before continuing.
+            </p>
+
+            <div class="summary-box">
+
+                <h3>Pain&Gain GYM Package</h3>
+
+                <ul>
+                    <li>Unlimited Gym Access</li>
+                    <li>Personal Trainer Sessions</li>
+                    <li>Custom Nutrition Program</li>
+                    <li>Premium Fitness Dashboard</li>
+                </ul>
+
+                <h2>$84 / Month</h2>
+
+            </div>
+
+            <button class="btn-primary-custom"
+                    onclick="goToStep(2)">
+                Continue
+            </button>
+
+        </section>
+
+        <!-- STEP 2 -->
+
+        <section class="form-step"
+                 id="step2">
+
+            <h1>Personal Information</h1>
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input type="text"
+                           id="fullName"
+                           placeholder="John Smith">
+
+                    <small class="error"
+                           id="nameError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input type="email"
+                           id="email"
+                           placeholder="john@email.com">
+
+                    <small class="error"
+                           id="emailError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    <input type="text"
+                           id="phone"
+                           placeholder="70123456">
+
+                    <small class="error"
+                           id="phoneError"></small>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn-secondary-custom"
+                        onclick="goToStep(1)">
+                    Back
+                </button>
+
+                <button class="btn-primary-custom"
+                        onclick="goToStep(3)">
+                    Continue
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- STEP 3 -->
+
+        <section class="form-step"
+                 id="step3">
+
+            <h1>Billing Address</h1>
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Street Address
+                    </label>
+
+                    <input type="text"
+                           id="address"
+                           placeholder="123 Main Street">
+
+                    <small class="error"
+                           id="addressError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        City
+                    </label>
+
+                    <input type="text"
+                           id="city"
+                           placeholder="Beirut">
+
+                    <small class="error"
+                           id="cityError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Country
+                    </label>
+
+                    <input type="text"
+                           id="country"
+                           placeholder="Lebanon">
+
+                    <small class="error"
+                           id="countryError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        ZIP Code
+                    </label>
+
+                    <input type="text"
+                           id="zip"
+                           placeholder="1001">
+
+                    <small class="error"
+                           id="zipError"></small>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn-secondary-custom"
+                        onclick="goToStep(2)">
+                    Back
+                </button>
+
+                <button class="btn-primary-custom"
+                        onclick="goToStep(4)">
+                    Continue
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- STEP 4 -->
+
+        <section class="form-step"
+                 id="step4">
+
+            <h1>Payment Details</h1>
+
+            <div class="credit-card">
+
+                <div class="card-chip"></div>
+
+                <div class="card-number"
+                     id="cardPreview">
+                    #### #### #### ####
+                </div>
+
+                <div class="card-footer">
+
+                    <div>
+
+                        <small>
+                            Card Holder
+                        </small>
+
+                        <h5 id="holderPreview">
+                            YOUR NAME
+                        </h5>
+
+                    </div>
+
+                    <div>
+
+                        <small>
+                            Expires
+                        </small>
+
+                        <h5 id="expiryPreview">
+                            MM/YY
+                        </h5>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Card Holder Name
+                    </label>
+
+                    <input type="text"
+                           id="cardHolder"
+                           placeholder="John Smith">
+
+                    <small class="error"
+                           id="holderError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Card Number
+                    </label>
+
+                    <input type="text"
+                           id="cardNumber"
+                           placeholder="1234 5678 9012 3456">
+
+                    <small class="error"
+                           id="cardError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Expiry Date
+                    </label>
+
+                    <input type="text"
+                           id="expiry"
+                           placeholder="MM/YY">
+
+                    <small class="error"
+                           id="expiryError"></small>
+
+                </div>
+
+                <div>
+
+                    <label>
+                        CVV
+                    </label>
+
+                    <input type="password"
+                           id="cvv"
+                           placeholder="123">
+
+                    <small class="error"
+                           id="cvvError"></small>
+
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn-secondary-custom"
+                        onclick="goToStep(3)">
+                    Back
+                </button>
+
+                <button class="btn-primary-custom"
+                        onclick="goToStep(5)">
+                    Continue
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- STEP 5 -->
+
+        <section class="form-step"
+                 id="step5">
+
+            <h1>Confirmation</h1>
+
+            <div class="review-box">
+
+                <div id="reviewContent"></div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button class="btn-secondary-custom"
+                        onclick="goToStep(4)">
+                    Back
+                </button>
+
+                <button id="submitBtn"
+                        class="btn-success-custom"
+                        onclick="submitPayment()">
+
+                    Submit Payment
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- SUCCESS -->
+
+        <section id="successScreen"
+                 class="result-screen">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h1>
+                Payment Successful
+            </h1>
+
+            <p>
+                Welcome to FitFuel Elite.
+            </p>
+
+        </section>
+
+        <!-- FAILURE -->
+
+        <section id="failureScreen"
+                 class="result-screen">
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            <h1>
+                Payment Failed
+            </h1>
+
+            <p>
+                Please try another card.
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
