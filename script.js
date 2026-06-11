@@ -78,56 +78,42 @@ function updateStepper(step){
 /* =========================
    PERSONAL VALIDATION
 ========================= */
-
-function validatePersonalInfo(){
+function validatePersonalInfo() {
 
     let valid = true;
 
     clearErrors();
 
-    const name =
-    document.getElementById("fullName").value.trim();
+    const name = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
-    const email =
-    document.getElementById("email").value.trim();
-
-    const phone =
-    document.getElementById("phone").value.trim();
-
-    if(name.length < 3){
-
-        showError(
-            "nameError",
-            "Please enter your full name (minimum 3 characters)."
-        );
-
+    // NAME
+    if (name.length < 3) {
+        showError("nameError", "Please enter your full name (minimum 3 characters).");
         valid = false;
+    } else {
+        clearFieldError("nameError");
     }
 
-    const emailRegex =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // EMAIL
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!emailRegex.test(email)){
-
-        showError(
-            "emailError",
-            "Please enter a valid email address."
-        );
-
+    if (!emailRegex.test(email)) {
+        showError("emailError", "Please enter a valid email address.");
         valid = false;
+    } else {
+        clearFieldError("emailError");
     }
 
-    const phoneRegex =
-    /^[0-9]{8,15}$/;
+    // PHONE
+    const phoneRegex = /^[0-9]{8,15}$/;
 
-    if(!phoneRegex.test(phone)){
-
-        showError(
-            "phoneError",
-            "Phone number must contain 8-15 digits."
-        );
-
+    if (!phoneRegex.test(phone)) {
+        showError("phoneError", "Phone number must contain 8-15 digits.");
         valid = false;
+    } else {
+        clearFieldError("phoneError");
     }
 
     return valid;
@@ -137,60 +123,43 @@ function validatePersonalInfo(){
    ADDRESS VALIDATION
 ========================= */
 
-function validateAddress(){
+function validateAddress() {
 
     let valid = true;
 
-    const address =
-    document.getElementById("address").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const country = document.getElementById("country").value.trim();
+    const zip = document.getElementById("zip").value.trim();
 
-    const city =
-    document.getElementById("city").value.trim();
-
-    const country =
-    document.getElementById("country").value.trim();
-
-    const zip =
-    document.getElementById("zip").value.trim();
-
-    if(address.length < 5){
-
-        showError(
-            "addressError",
-            "Enter a valid street address."
-        );
-
+    if (address.length < 5) {
+        showError("addressError", "Enter a valid street address.");
         valid = false;
+    } else {
+        clearFieldError("addressError");
     }
 
-    if(city.length < 2){
-
-        showError(
-            "cityError",
-            "Enter a valid city."
-        );
-
+    if (city.length < 2) {
+        showError("cityError", "Enter a valid city.");
         valid = false;
+    } else {
+        clearFieldError("cityError");
     }
 
-    if(country.length < 2){
-
-        showError(
-            "countryError",
-            "Enter a valid country."
-        );
-
+    if (country.length < 2) {
+        showError("countryError", "Enter a valid country.");
         valid = false;
+    } else {
+        clearFieldError("countryError");
     }
 
-    if(zip.length < 3){
+    const zipRegex = /^\d{4}$/;
 
-        showError(
-            "zipError",
-            "Enter a valid ZIP code."
-        );
-
+    if (!zipRegex.test(zip)) {
+        showError("zipError", "ZIP code must be exactly 4 digits.");
         valid = false;
+    } else {
+        clearFieldError("zipError");
     }
 
     return valid;
@@ -200,64 +169,47 @@ function validateAddress(){
    PAYMENT VALIDATION
 ========================= */
 
-function validatePayment(){
+function validatePayment() {
 
     let valid = true;
 
-    const holder =
-    document.getElementById("cardHolder").value.trim();
+    const holder = document.getElementById("cardHolder").value.trim();
+    const card = document.getElementById("cardNumber").value.replace(/\s/g, '');
+    const expiry = document.getElementById("expiry").value.trim();
+    const cvv = document.getElementById("cvv").value.trim();
 
-    const card =
-    document.getElementById("cardNumber")
-    .value.replace(/\s/g,'');
-
-    const expiry =
-    document.getElementById("expiry").value.trim();
-
-    const cvv =
-    document.getElementById("cvv").value.trim();
-
-    if(holder.length < 3){
-
-        showError(
-            "holderError",
-            "Enter card holder name."
-        );
-
+    // HOLDER
+    if (holder.length < 3) {
+        showError("holderError", "Enter card holder name.");
         valid = false;
+    } else {
+        clearFieldError("holderError");
     }
 
-    if(card.length !== 16){
-
-        showError(
-            "cardError",
-            "Card number must contain 16 digits."
-        );
-
+    // CARD
+    if (card.length !== 16) {
+        showError("cardError", "Card number must contain 16 digits.");
         valid = false;
+    } else {
+        clearFieldError("cardError");
     }
 
-    const expiryRegex =
-    /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    // EXPIRY
+    const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
-    if(!expiryRegex.test(expiry)){
-
-        showError(
-            "expiryError",
-            "Format must be MM/YY."
-        );
-
+    if (!expiryRegex.test(expiry)) {
+        showError("expiryError", `Invalid expiry date "${expiry}".`);
         valid = false;
+    } else {
+        clearFieldError("expiryError");
     }
 
-    if(cvv.length !== 3){
-
-        showError(
-            "cvvError",
-            "CVV must contain 3 digits."
-        );
-
+    // CVV
+    if (cvv.length !== 3) {
+        showError("cvvError", "CVV must contain 3 digits.");
         valid = false;
+    } else {
+        clearFieldError("cvvError");
     }
 
     return valid;
@@ -281,6 +233,10 @@ function showError(id,message){
     document
     .getElementById(id)
     .innerText = message;
+}
+
+function clearFieldError(errorId) {
+    document.getElementById(errorId).innerText = "";
 }
 
 /* =========================
